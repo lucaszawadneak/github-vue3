@@ -3,7 +3,9 @@
   <span>Just a place to study vue and search your profile!</span>
   <div class="input-holder">
     <input type="text" placeholder="@lucaszawadneak" />
-    <button>Git me</button>
+    <button>
+      <img src="../assets/github.png" alt="github" />
+    </button>
   </div>
 </template>
 
@@ -15,6 +17,11 @@ export default {};
 h1 {
   color: #1b998b;
   font-family: 'Hammersmith One', sans-serif;
+}
+
+img {
+  height: 30px;
+  width: 30px;
 }
 
 .input-holder {
@@ -51,7 +58,12 @@ button {
   font-size: 14px;
   font-weight: bold;
   transition: 300ms;
-  width: 100px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
   margin-left: 10px;
 }
 
