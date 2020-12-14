@@ -1,27 +1,65 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="center-stuff">
+    <search-bar />
+    <cards />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script>
+import SearchBar from './components/SearchBar.vue';
+import Cards from './components/Cards.vue';
 
-export default defineComponent({
-  name: 'App',
+export default {
   components: {
-    HelloWorld,
+    SearchBar,
+    Cards,
   },
-});
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  -webkit-font-smoothing-: antialiased;
+}
+body,
+input,
+h1,
+strong,
+button {
+  font-size: 16px, 'Roboto', sans-serif;
+}
+span {
+  font-style: italic;
+  font-weight: 100;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+button,
+a {
+  cursor: pointer;
+}
+.center-stuff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
 }
 </style>
