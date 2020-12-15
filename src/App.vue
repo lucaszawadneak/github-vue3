@@ -1,18 +1,30 @@
 <template>
+  <user-modal :visible="visible" :setVisible="setVisible" />
   <div class="center-stuff">
     <search-bar />
-    <cards />
+    <cards :setVisible="setVisible" />
   </div>
 </template>
 
 <script>
-import SearchBar from './components/SearchBar.vue';
-import Cards from './components/Cards.vue';
+import SearchBar from './components/SearchBar';
+import Cards from './components/Cards';
+import UserModal from './components/UserModal';
+import useModal from './hooks/modal';
 
 export default {
   components: {
     SearchBar,
     Cards,
+    UserModal,
+  },
+  setup() {
+    const { setVisible, visible } = useModal();
+
+    return {
+      visible,
+      setVisible,
+    };
   },
 };
 </script>
@@ -39,12 +51,15 @@ body,
 input,
 h1,
 strong,
+p,
 button {
   font-size: 16px, 'Roboto', sans-serif;
 }
-span {
+span,
+a {
   font-style: italic;
   font-weight: 100;
+  color: #000;
 }
 a {
   text-decoration: none;

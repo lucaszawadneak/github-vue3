@@ -1,6 +1,6 @@
 <template>
   <div class="item-holder">
-    <div v-for="item in list" :key="item.name" class="item-box">
+    <div v-for="item in list" :key="item.name" class="item-box" @click="toggleVisible">
       <img :src="item.picture" alt="profile" />
       <strong>{{ item.name }}</strong>
       <span>{{ item.id }}</span>
@@ -9,27 +9,39 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
-  data() {
-    return {
-      list: [
-        {
-          name: 'Lucas',
-          id: '@lucaszawafasfasfdneak',
-          picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-        },
-        {
-          name: 'Ronaldo',
-          id: '@ronaldo',
-          picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-        },
-        {
-          name: 'Berbes',
-          id: '@berbes',
-          picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-        },
-      ],
-    };
+  props: {
+    setVisible: {
+      type: Function,
+      default: () => {},
+    },
+  },
+  setup() {
+    const list = ref([
+      {
+        name: 'Lucas',
+        id: '@lucaszawafasfasfdneak',
+        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
+      },
+      {
+        name: 'Ronaldo',
+        id: '@ronaldo',
+        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
+      },
+      {
+        name: 'Berbes',
+        id: '@berbes',
+        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
+      },
+    ]);
+
+    function toggleVisible() {
+      setVisible(true);
+    }
+
+    return { list, toggleVisible };
   },
 };
 </script>
