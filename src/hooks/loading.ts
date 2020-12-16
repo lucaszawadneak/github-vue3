@@ -1,13 +1,11 @@
 import { reactive, toRefs } from 'vue';
 
-export default function useLoading() {
-  const state = reactive({
-    loading: true,
-  });
+const state = reactive({
+  loading: true,
+});
 
-  function setLoading(visibleBool: boolean) {
-    state.loading = visibleBool;
-  }
-
-  return { setLoading, ...toRefs(state) };
+function setLoading(loadingBool: boolean) {
+  state.loading = loadingBool;
 }
+
+export default { setLoading, ...toRefs(state) };

@@ -1,8 +1,8 @@
 <template>
-  <user-modal :visible="visible" :setVisible="setVisible" />
+  <user-modal />
   <div class="center-stuff">
     <search-bar />
-    <cards :setVisible="setVisible" />
+    <cards />
   </div>
 </template>
 
@@ -10,21 +10,12 @@
 import SearchBar from './components/SearchBar';
 import Cards from './components/Cards';
 import UserModal from './components/UserModal';
-import useModal from './hooks/modal';
 
 export default {
   components: {
     SearchBar,
     Cards,
     UserModal,
-  },
-  setup() {
-    const { setVisible, visible } = useModal();
-
-    return {
-      visible,
-      setVisible,
-    };
   },
 };
 </script>

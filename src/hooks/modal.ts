@@ -1,13 +1,11 @@
 import { reactive, toRefs } from 'vue';
 
-export default function useModal() {
-  const state = reactive({
-    visible: true,
-  });
+const state = reactive({
+  visible: false,
+});
 
-  function setVisible(visibleBool: boolean) {
-    state.visible = visibleBool;
-  }
-
-  return { setVisible, ...toRefs(state) };
+function setVisible(visibleBool: boolean) {
+  state.visible = visibleBool;
 }
+
+export default { setVisible, ...toRefs(state) };

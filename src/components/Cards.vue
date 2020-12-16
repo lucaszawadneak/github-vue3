@@ -10,14 +10,9 @@
 
 <script>
 import { ref } from 'vue';
+import useModal from '../hooks/modal';
 
 export default {
-  props: {
-    setVisible: {
-      type: Function,
-      default: () => {},
-    },
-  },
   setup() {
     const list = ref([
       {
@@ -36,6 +31,8 @@ export default {
         picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
       },
     ]);
+
+    const { setVisible } = useModal;
 
     function toggleVisible() {
       setVisible(true);

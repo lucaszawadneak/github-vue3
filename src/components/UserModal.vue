@@ -13,15 +13,13 @@
 import useModal from '../hooks/modal';
 
 export default {
-  props: {
-    visible: {
-      type: Boolean,
-      required: true,
-    },
-    setVisible: {
-      type: Function,
-      default: () => {},
-    },
+  setup() {
+    const { visible, setVisible } = useModal;
+
+    return {
+      visible,
+      setVisible,
+    };
   },
 };
 </script>

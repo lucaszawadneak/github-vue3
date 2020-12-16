@@ -3,14 +3,28 @@
   <span>Just a place to study vue and search your profile!</span>
   <div class="input-holder">
     <input type="text" placeholder="@lucaszawadneak" />
-    <button>
+    <button @click="handleSearch">
       <img src="../assets/github.png" alt="github" />
     </button>
   </div>
 </template>
 
 <script>
-export default {};
+import { ref } from 'vue';
+import { loadData } from '../hooks/list';
+
+export default {
+  setup() {
+    const textValue = ref('');
+
+    function handleSearch() {
+      console.log('SEARCHING....');
+      loadData(textValue);
+    }
+
+    return { textValue, handleSearch };
+  },
+};
 </script>
 
 <style scoped>
