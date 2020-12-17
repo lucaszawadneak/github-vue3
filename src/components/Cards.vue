@@ -1,41 +1,23 @@
 <template>
   <div class="item-holder">
-    <div v-for="item in list" :key="item.name" class="item-box" @click="toggleVisible">
-      <img :src="item.picture" alt="profile" />
-      <strong>{{ item.name }}</strong>
-      <span>{{ item.id }}</span>
+    <div v-for="item in list" :key="item.name" class="item-box" @click="() => toggleVisible(item)">
+      <img :src="item.avatar_url" alt="profile" />
+      <span>@{{ item.login }}</span>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import useModal from '../hooks/modal';
+import setVisible from '../hooks/modal';
+import { data } from '../hooks/users';
 
 export default {
   setup() {
-    const list = ref([
-      {
-        name: 'Lucas',
-        id: '@lucaszawafasfasfdneak',
-        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-      },
-      {
-        name: 'Ronaldo',
-        id: '@ronaldo',
-        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-      },
-      {
-        name: 'Berbes',
-        id: '@berbes',
-        picture: 'https://lucaszawadneak.me/static/media/profile.df0422e2.png',
-      },
-    ]);
+    const list = data.users;
 
-    const { setVisible } = useModal;
-
-    function toggleVisible() {
-      setVisible(true);
+    function toggleVisible(item) {
+      setVisible({ visibleBool: true, item });
     }
 
     return { list, toggleVisible };
@@ -65,8 +47,9 @@ img {
 .item-box:hover {
   opacity: 0.7;
 }
-.item-box > strong {
-  margin-top: 5px;
+.item-box > span {
+  margin-top: 10px;
+  text-align: center;
 }
 
 .item-holder {

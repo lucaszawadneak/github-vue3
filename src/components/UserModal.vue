@@ -1,24 +1,24 @@
 <template>
-  <div class="modal-background" v-show="visible" @click="() => setVisible(false)">
+  <div class="modal-background" v-show="visible" @click="() => setVisible({ visibleBool: false })">
     <div class="modal-content">
-      <img src="https://lucaszawadneak.me/static/media/profile.df0422e2.png" alt="profile" />
-      <h1>Lucas Cassilha Zawadneak</h1>
-      <a href="https://github.com/lucaszawadneak">@lucaszawadneak</a>
-      <p>Lorem asfnkasnf trwjnlkanfalkwnf fnwalfa lfn</p>
+      <img :src="userInfo.avatar_url" alt="profile" />
+      <h1>@{{ userInfo.login }}</h1>
+      <a :href="userInfo.html_url">Click here to open profile</a>
     </div>
   </div>
 </template>
 
 <script>
-import useModal from '../hooks/modal';
+import setVisible, { useModal } from '../hooks/modal';
 
 export default {
   setup() {
-    const { visible, setVisible } = useModal;
+    const { visible, userInfo } = useModal;
 
     return {
       visible,
       setVisible,
+      userInfo,
     };
   },
 };
@@ -46,6 +46,7 @@ export default {
 img {
   height: 150px;
   width: 150px;
+  border-radius: 100px;
   align-self: center;
 }
 p,
@@ -53,6 +54,10 @@ h1 {
   margin-top: 10px;
 }
 
+a {
+  margin-top: 10px;
+  text-decoration: underline;
+}
 h1 {
   font-size: 21px;
 }

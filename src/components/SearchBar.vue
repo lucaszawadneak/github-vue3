@@ -2,8 +2,8 @@
   <h1>Github Profiles :)</h1>
   <span>Just a place to study vue and search your profile!</span>
   <div class="input-holder">
-    <input type="text" placeholder="@lucaszawadneak" />
-    <button @click="handleSearch">
+    <input type="text" placeholder="@lucaszawadneak" v-model="textValue" />
+    <button @click="doYourResearch">
       <img src="../assets/github.png" alt="github" />
     </button>
   </div>
@@ -11,18 +11,18 @@
 
 <script>
 import { ref } from 'vue';
-import { loadData } from '../hooks/list';
+import handleSearch, { data } from '../hooks/users';
 
 export default {
   setup() {
     const textValue = ref('');
 
-    function handleSearch() {
+    function doYourResearch() {
       console.log('SEARCHING....');
-      loadData(textValue);
+      handleSearch(textValue.value);
     }
 
-    return { textValue, handleSearch };
+    return { textValue, doYourResearch };
   },
 };
 </script>
