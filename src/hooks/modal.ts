@@ -7,6 +7,7 @@ interface ItemProps {
 }
 interface VisibleProps {
   visibleBool: boolean;
+  loading: boolean;
   item?: ItemProps;
 }
 

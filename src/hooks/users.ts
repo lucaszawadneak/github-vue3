@@ -8,10 +8,12 @@ interface Response {
 }
 interface Reactive {
   users: any[];
+  loading: boolean;
 }
 
 const state = reactive<Reactive>({
   users: [],
+  loading: false,
 });
 
 async function search(query: string) {
@@ -22,11 +24,13 @@ async function search(query: string) {
       state.users = res.data.items;
     })
     .catch(err => console.error(err));
+  state.loading = false;
 }
 
 function handleSearch(query: string) {
+  state.loading = true;
   search(query);
 }
 
-export const data = { ...toRefs(state) };
+export const useUsers = { ...toRefs(state) };
 export default handleSearch;

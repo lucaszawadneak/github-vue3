@@ -10,11 +10,11 @@
 <script>
 import { ref } from 'vue';
 import setVisible from '../hooks/modal';
-import { data } from '../hooks/users';
+import { useUsers } from '../hooks/users';
 
 export default {
   setup() {
-    const list = data.users;
+    const list = useUsers.users;
 
     function toggleVisible(item) {
       setVisible({ visibleBool: true, item });

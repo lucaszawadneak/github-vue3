@@ -1,5 +1,6 @@
 <template>
   <user-modal />
+  <loading-modal />
   <div class="center-stuff">
     <search-bar />
     <cards />
@@ -10,12 +11,14 @@
 import SearchBar from './components/SearchBar';
 import Cards from './components/Cards';
 import UserModal from './components/UserModal';
+import LoadingModal from './components/LoadingModal';
 
 export default {
   components: {
     SearchBar,
     Cards,
     UserModal,
+    LoadingModal,
   },
 };
 </script>
