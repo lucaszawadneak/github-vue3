@@ -5,7 +5,7 @@ The whole project was built using the new [Composition API](https://composition-
 
 This project was built using [vue-cli](https://cli.vuejs.org/)
 
-You can check it out [**here**](https://lucaszawadneak.github.io/profiles/) :smiley:
+You can check it out [**here**](https://lucaszawadneak.github.io/github-vue3/) :smiley:
 
 ### :speech_balloon: Reach me
 
