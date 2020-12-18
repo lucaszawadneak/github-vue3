@@ -1,11 +1,17 @@
 <template>
-  <div class="modal-background" v-show="visible" @click="() => setVisible({ visibleBool: false })">
-    <div class="modal-content">
-      <img :src="userInfo.avatar_url" alt="profile" />
-      <h1>@{{ userInfo.login }}</h1>
-      <a :href="userInfo.html_url">Click here to open profile</a>
+  <transition name="fade">
+    <div
+      class="modal-background"
+      v-show="visible"
+      @click="() => setVisible({ visibleBool: false })"
+    >
+      <div class="modal-content" v-if="visible" @click.stop="">
+        <img :src="userInfo.avatar_url" alt="profile" />
+        <h1>@{{ userInfo.login }}</h1>
+        <a :href="userInfo.html_url">Click here to open profile</a>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -33,6 +39,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 .modal-content {
   background-color: #fff;
@@ -60,5 +67,13 @@ a {
 }
 h1 {
   font-size: 21px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

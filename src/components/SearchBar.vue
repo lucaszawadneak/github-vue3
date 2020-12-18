@@ -1,6 +1,6 @@
 <template>
-  <h1>Github Profiles :)</h1>
-  <span>Just a place to study vue and search your profile!</span>
+  <h1>Github Profiles</h1>
+  <span>Just a place to study Vue 3 and search your profile!</span>
   <div class="input-holder">
     <input type="text" placeholder="@lucaszawadneak" v-model="textValue" @keypress="handleSubmit" />
     <button @click="lookItUp">

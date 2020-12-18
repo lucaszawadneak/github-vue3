@@ -1,19 +1,17 @@
 <template>
-  <div class="modal-background" v-show="loading">
-    <div class="modal-content">
-      <lottie-animation path="../assets/loading.json" :autoPlay="true" :height="200" :width="200" />
+  <transition name="fade">
+    <div class="modal-background" v-show="loading">
+      <div class="modal-content">
+        <h1>Loading</h1>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
-import LottieAnimation from 'lottie-vuejs/src/LottieAnimation';
 import { useUsers } from '../hooks/users';
 
 export default {
-  components: {
-    LottieAnimation,
-  },
   setup() {
     const { loading } = useUsers;
 
@@ -34,10 +32,12 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.modal-content {
-  padding: 15px;
-  z-index: 1;
+h1 {
+  color: #1b998b;
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 21px;
 }
+
 img {
   height: 150px;
   width: 150px;
@@ -53,7 +53,13 @@ a {
   margin-top: 10px;
   text-decoration: underline;
 }
-h1 {
-  font-size: 21px;
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

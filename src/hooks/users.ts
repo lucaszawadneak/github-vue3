@@ -9,19 +9,23 @@ interface Response {
 interface Reactive {
   users: any[];
   loading: boolean;
+  showList: boolean;
 }
 
 const state = reactive<Reactive>({
   users: [],
   loading: false,
+  showList: false,
 });
 
 async function search(query: string) {
+  state.showList = false;
   await api
     .get('/search/users', { params: { q: query } })
     .then((res: Response) => {
       console.log(res.data.items);
       state.users = res.data.items;
+      state.showList = true;
     })
     .catch(err => console.error(err));
   state.loading = false;
